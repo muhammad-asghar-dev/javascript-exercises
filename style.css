@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui;
+}
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    flex-direction: column;
+}
+.header {
+    display: flex;
+}
+.header button {
+    width: 100px;
+    aspect-ratio: 1/0.3;
+    margin: 0 10px 0 0;
+    cursor: pointer;
+}
+.header button:disabled {
+    cursor: not-allowed;
+}
+.table {
+    width: 400px;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    border: 2px solid;
+    display: grid;
+    grid-template-columns: repeat(5, 10fr);
+    grid-template-rows: repeat(5, 10fr);
+    margin: 15px 0;
+    position: relative;
+}
+.table:not(.active)::before {
+    content: "";
+    background: rgba(90, 88, 88, 0.247);
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+}
+.cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid;
+    cursor: default;
+    transition: all 0.3s ease;
+    background: white;
+    user-select: none;
+}
+.cell.wrong {
+    background: red;
+}
+.cell.correct {
+    background: green;
+}
+.cell.wrong,
+.cell.correct {
+    color: white;
+    cursor: not-allowed;
+}
+.cell:not(.wrong, .correct):hover {
+    background: rgb(236, 236, 236);
+    transform: scale(1.15);
+}
+
+.countdown-score {
+    display: flex;
+}
+.d-none {
+    display: none !important;
+}
